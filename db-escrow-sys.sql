@@ -188,6 +188,13 @@ menu_root_id int,
 constraint pk_master_merchant_menu_id primary key(menu_id),
 constraint fk_mm_menu_root_id foreign key(menu_root_id) references master_merchant_menu(menu_id));
 
+CREATE SEQUENCE seq_master_merchant_menu_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
 create table admin_menu(
 menu_id int not null,
 menu_name character varying(100),
@@ -198,24 +205,100 @@ menu_root_id int,
 constraint pk_admin_menu_id primary key(menu_id),
 constraint fk_am_menu_root_id foreign key(menu_root_id) references admin_menu(menu_id));
 
-create table admin_role(
-role_id int not null,
-role_name character varying(100),
-role_description text,
-constraint pk_admin_role_id primary key(role_id));
+CREATE SEQUENCE seq_admin_menu_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
 
-create table admin_role_menu_link(
-link_id int not null,
-role_id int not null,
+create table admin_groups(
+admin_groups_id int not null,
+admin_groups_name character varying(200),
+admin_groups_desc text,
+constraint pk_admin_groups_id primary key(admin_groups_id));
+
+CREATE SEQUENCE seq_admin_groups_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+create table link_admin_groups(
+access_id bigint not null,
+admin_groups_id int not null,
 menu_id int not null,
-constraint 
+constraint pk_lag_access_id primary key(access_id),
+constraint fk_lag_admin_groups_id foreign key(admin_groups_id) references admin_groups(admin_groups_id),
+constraint fk_lag_menu_id foreign key(menu_id) references admin_menu(menu_id));
+
+CREATE SEQUENCE seq_link_admin_groups_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+create table link_groups_admin_users(
+link_id bignit not null,
+admin_users_id int not null,
+admin_groups_id int not null,
+constraint pk_lgau_link_id primary key(admin_groups_id),
+constraint fk_lgau_admin_users_id foreign key(admin_users_id) references admin_users(admin_users_id),
+constraint fk_lgau_admin_groups_id foreign key(admin_groups_id) references admin_groups(admin_groups_id));
+
+CREATE SEQUENCE seq_link_users_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
 
 
-create table merchant_role(
-role_id int not null,
-role_name character varying(100),
-role_description text,
-constraint pk_merchant_role_id primary key(role_id));
+create table merchant_groups(
+merchant_groups_id int not null,
+merchant_groups_name character varying(200),
+merchant_groups_desc text,
+constraint pk_merchant_groups_id primary key(merchant_groups_id));
+
+CREATE SEQUENCE seq_mmerchant_groups_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+create table link_merchant_groups(
+access_id bigint not null,
+merchant_groups_id int not null,
+menu_id int not null,
+constraint pk_lmg_access_id primary key(access_id),
+constraint fk_lmg_admin_groups_id foreign key(merchant_groups_id) references merchant_groups(merchant_groups_id),
+constraint fk_lmg_menu_id foreign key(menu_id) references master_merchant_menu(menu_id));
+
+CREATE SEQUENCE seq_link_merchant_groups_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
+create table link_groups_merchant_users(
+link_id bignit not null,
+master_merchant_users_id int not null,
+merchant_groups_id int not null,
+constraint pk_lgmu_link_id primary key(merchant_groups_id),
+constraint fk_lgmu_admin_users_id foreign key(merchant_users_id) references master_merchant_users(master_merchant_users_id),
+constraint fk_lgmu_admin_groups_id foreign key(merchant_groups_id) references merchant_groups(merchant_groups_id));
+
+CREATE SEQUENCE seq_link_group_user_id
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+
 
 
 
