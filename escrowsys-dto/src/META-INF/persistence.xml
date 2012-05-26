@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+    <persistence-unit name="ESCROWSYS" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <jta-data-source>java:ESCROWSYSDS</jta-data-source>
+        <mapping-file>META-INF/admin-ormap.xml</mapping-file>
+        <mapping-file>META-INF/ormap.xml</mapping-file>
+        <class>com.escrowsys.db.dto.PaymentFormula</class>
+        <class>com.escrowsys.db.dto.MerchantGroups</class>
+        <class>com.escrowsys.db.dto.MasterMerchantFormula</class>
+        <class>com.escrowsys.db.dto.AdminGroups</class>
+        <class>com.escrowsys.db.dto.MasterMerchantMenu</class>
+        <class>com.escrowsys.db.dto.TransactionsShareData</class>
+        <class>com.escrowsys.db.dto.LinkAdminGroups</class>
+        <class>com.escrowsys.db.dto.BankAccountMasterMerchant</class>
+        <class>com.escrowsys.db.dto.LinkGroupsAdminUsers</class>
+        <class>com.escrowsys.db.dto.AdminUsers</class>
+        <class>com.escrowsys.db.dto.MasterMerchant</class>
+        <class>com.escrowsys.db.dto.AdminMenu</class>
+        <class>com.escrowsys.db.dto.Batch</class>
+        <class>com.escrowsys.db.dto.MerchantConnector</class>
+        <class>com.escrowsys.db.dto.Merchant</class>
+        <class>com.escrowsys.db.dto.LinkMerchantGroups</class>
+        <class>com.escrowsys.db.dto.PaymentChannel</class>
+        <class>com.escrowsys.db.dto.GeneralAccount</class>
+        <class>com.escrowsys.db.dto.MasterMerchantUsers</class>
+        <class>com.escrowsys.db.dto.Transactions</class>
+        <properties>
+            <property name="hibernate.show_sql" value="false" />
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+            <!--<property name="hibernate.query.factory_class" value="org.hibernate.hql.classic.ClassicQueryTranslatorFactory" />-->
+        </properties>
+    </persistence-unit>
+</persistence>
