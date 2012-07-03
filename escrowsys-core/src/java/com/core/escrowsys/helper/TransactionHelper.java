@@ -10,6 +10,7 @@ import com.escrowsys.db.dto.MasterMerchantFormula;
 import com.escrowsys.db.dto.PaymentChannel;
 import com.escrowsys.db.dto.PaymentFormula;
 import com.escrowsys.db.dto.Transactions;
+import com.helper.escrowsys.request.GeneralPaymentReq;
 import com.helper.escrowsys.request.InitiatePaymentRequest;
 
 /**
@@ -23,6 +24,7 @@ public class TransactionHelper {
     private MasterMerchant masterMerchant;
     private MasterMerchantFormula masterMerchantFormula;
     private InitiatePaymentRequest initiatePaymentRequest;
+    private GeneralPaymentReq generalPaymentReq;
 
     public TransactionHelper() {
     }
@@ -111,6 +113,22 @@ public class TransactionHelper {
     public void setInitiatePaymentRequest(InitiatePaymentRequest initiatePaymentRequest) {
         this.initiatePaymentRequest = initiatePaymentRequest;
     }
+
+    /**
+     * @return the generalPaymentReq
+     */
+    public GeneralPaymentReq getGeneralPaymentReq() {
+        return generalPaymentReq;
+    }
+
+    /**
+     * @param generalPaymentReq the generalPaymentReq to set
+     */
+    public void setGeneralPaymentReq(GeneralPaymentReq generalPaymentReq) {
+        this.generalPaymentReq = generalPaymentReq;
+    }
+
+    
 
     
 
